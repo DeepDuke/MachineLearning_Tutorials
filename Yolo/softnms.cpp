@@ -15,7 +15,7 @@ double IOU(vector<double> a, vector<double> b){
 }
 
 double func(double score, double iou, double thresh){
-	if(score < thresh) return score;
+	if(iou < thresh) return score;
 	else return score*(1-iou);
 }
 
@@ -31,12 +31,12 @@ vector<vector<double> > softNMS(vector<vector<double> > bboxes, double thresh){
 				tmp_idx = i;
 			}
 		}
-		for(int i = 1; i < bboxes.size(); i++){
+		buffer.push_back(tmp);
+		bboxes.erase(bboxes.begin()+tmp_idx);
+		for(int i = 0; i < bboxes.size(); i++){
 			double iou = IOU(bboxes[i], tmp);
 			bboxes[i][4] = func(bboxes[i][4], iou, thresh);
 		}
-		buffer.push_back(tmp);
-		bboxes.erase(bboxes.begin()+tmp_idx);
 	}
 	// print bboxes
 	cout << "After softNMS, bboxes:\n";
