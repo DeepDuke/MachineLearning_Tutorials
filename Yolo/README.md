@@ -1,3 +1,4 @@
 ## NMS and soft-NMS
 
-![NMS and soft-NMS](../Images/NMS.png)
+
+![](https://github.com/DeepDuke/MachineLearning_Tutorials/raw/master/Images/NMS.png)
